@@ -1,5 +1,6 @@
 class Tweet < ApplicationRecord
   belongs_to :user
   has_many :likes
-  mount_uploader :image, ImageUploader
+  has_many_attached :images
+  # mount_uploader :image, ImageUploader
 end
