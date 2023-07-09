@@ -65,6 +65,10 @@ group :development do
   gem 'erb2haml'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'sass-rails', '>= 6'
+  gem 'sassc-rails'
+
+
   
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
