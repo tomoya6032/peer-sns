@@ -2,15 +2,22 @@
 .top_container
   %h2 みんなの想い
 
-  - @tweets.each do |tweet|
-    .tweet
-      .user-info
-        %h2= tweet.user.name
-        %p= tweet.user.email
-      .content
-        %p= tweet.content
-        - if tweet.image.attached?
-          = image_tag tweet.image
-      .actions
-        = link_to 'Like', like_tweet_path(tweet), method: :post
-        = link_to 'Reply', new_reply_path(tweet_id: tweet.id)
+.new_tweet_container
+  = link_to new_tweet_path do
+    -#   = link_to 'New Tweet', new_tweet_path, remote: true, class: 'btn btn-primary'
+    .tweet_new
+      %p 新しいツイート
+
+- @tweets.each do |tweet|
+  .tweet
+    .user-info
+      %h2= tweet.user.name
+      %p= tweet.user.email
+    .content
+      %p= tweet.content
+      - if tweet.image.attached?
+        = image_tag tweet.image
+    
+    .actions
+      = link_to 'Like', like_tweet_path(tweet), method: :post
+      = link_to 'Reply', new_reply_path(tweet_id: tweet.id)

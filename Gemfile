@@ -67,7 +67,7 @@ group :development do
   gem 'binding_of_caller'
   gem 'sass-rails', '>= 6'
   gem 'sassc-rails'
-
+  
 
   
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
@@ -86,3 +86,6 @@ end
 
 gem 'devise'
 gem 'rails-i18n'
+# gem 'webpacker', '~> 5.0'
+
+gem "webpacker", "~> 5.4"
