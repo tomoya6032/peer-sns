@@ -1,9 +1,13 @@
-= form_with model: @tweet, local: true do |form|
-  .field
-    = form.label :content
-    = form.text_area :content, required: true
-  .field
-    = form.label :image
-    = form.file_field :image
-  .actions
-    = form.submit "ツイートする"
+.tweet_container
+  %ul
+    - @tweet.errors.full_messages.each do |message|
+      %li= message
+  = form_with(model: @tweet, local: true, multipart: true) do |form|
+    .field
+      = form.label :content
+      = form.text_area :content, required: true
+    .field
+      = form.label :images
+      = form.file_field :images, multiple: true
+    .actions
+      = form.submit "ツイートする"
