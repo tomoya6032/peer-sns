@@ -18,9 +18,11 @@ class User < ApplicationRecord
   has_many :followers, through: :follower_relationships, source: :follower
 
 
+  def display_name
+    profile&.nickname.presence || self.email.split('@').first
+  end
 
-
-
+  
   
   def avatar_image
     if profile&.avatar&.attached?

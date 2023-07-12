@@ -11,13 +11,14 @@
 - @tweets.each do |tweet|
   .tweet
     .user-info
-      %h2= tweet.user.name
+      %h2= tweet.author_name
       %p= tweet.user.email
     .content
       %p= tweet.content
-      - if tweet.image.attached?
-        = image_tag tweet.image
+      - if tweet.images.attached?
+        - tweet.images.each do |image|
+          = image_tag image
     
-    .actions
-      = link_to 'Like', like_tweet_path(tweet), method: :post
-      = link_to 'Reply', new_reply_path(tweet_id: tweet.id)
+    -# .actions
+    -#   = link_to 'Like', like_tweet_path(tweet), method: :post
+    -#   = link_to 'Reply', new_reply_path(tweet_id: tweet.id)

@@ -15,21 +15,22 @@ class TweetsController < ApplicationController
     end
   
     def create
+      
       @tweet = current_user.tweets.build(tweet_params)
       if @tweet.save
         redirect_to tweets_path, notice: '保存ができたよ'
         # respond_to do |format|
         #   format.js
-        # else
+       else
         flash.now[:error] = '保存に失敗しました'
         render :new
-      end
+       end
     end
   
 
     private
-    def tweet_params
-      params.require(:tweet).permit(:content, :image)
-    end
+      def tweet_params
+        params.require(:tweet).permit(:content, images: [])
+      end
   
 end
