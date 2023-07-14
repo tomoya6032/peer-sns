@@ -1,6 +1,6 @@
 class Tweet < ApplicationRecord
   validates :content, presence: true
-  validates :content, length: { minimum: 10 }
+  # validates :content, length: { minimum: 10 }
   validates :content, uniqueness: true
   # validate :validate_title_and_content_length
   
@@ -17,5 +17,12 @@ class Tweet < ApplicationRecord
     user.display_name
   end
 
+  def avatar_image
+    if profile&.avatar&.attached?
+      profile.avatar
+    else
+      'default-avatar.png'
+    end
+  end
 
 end

@@ -2,23 +2,63 @@
 .top_container
   %h2 みんなの想い
 
-.new_tweet_container
-  = link_to new_tweet_path do
-    -#   = link_to 'New Tweet', new_tweet_path, remote: true, class: 'btn btn-primary'
-    .tweet_new
-      %p 新しいツイート
 
-- @tweets.each do |tweet|
-  .tweet
-    .user-info
-      %h2= tweet.author_name
-      %p= tweet.user.email
-    .content
-      %p= tweet.content
-      - if tweet.images.attached?
-        - tweet.images.each do |image|
-          = image_tag image
+
+
+.container
+  .row
+    .col-md-2
+      .left-sidebar
+        %ul.nav.flex-column
+          %p ホーム
+          %p プロフィール
+        -#   %li.nav-item= link_to 'ホーム', root_path
+        -#   %li.nav-item= link_to 'プロフィール', profile_path
+      .new_tweet_container
+        = link_to new_tweet_path do
+          -#   = link_to 'New Tweet', new_tweet_path, remote: true, class: 'btn btn-primary'
+          .tweet_new
+            %p 新しいツイート
     
-    -# .actions
-    -#   = link_to 'Like', like_tweet_path(tweet), method: :post
-    -#   = link_to 'Reply', new_reply_path(tweet_id: tweet.id)
+    .col-md-8
+      
+
+      .tweet_container
+        %ul
+        - @tweet.errors.full_messages.each do |message|
+          %li= message
+        = form_with(model: @tweet, local: true, multipart: true, html: { class: 'tweet-form' }) do |form|
+          .field
+            -# = form.label :content
+            = form.text_area :content, required: true, class: 'tweet-text-area'
+          .field
+            -# = form.label :images
+            = form.file_field :images, multiple: true
+          .actions
+            = form.submit "ツイートする"
+
+        .tweet-index
+        - @tweets.order(created_at: :desc).each do |tweet|
+          .tweet
+            .user-info
+              -# = image_tag @tweet.user.avatar_image
+              = image_tag current_user.avatar_image, class: 'tweet_avatar_image'
+              %h2= tweet.author_name
+              %p= tweet.user.email
+            .content
+              %p= tweet.content
+              - if tweet.images.attached?
+                - tweet.images.each do |image|
+                  = image_tag image
+        
+        -# .actions
+        -#   = link_to 'Like', like_tweet_path(tweet), method: :post
+        -#   = link_to 'Reply', new_reply_path(tweet_id: tweet.id)
+
+    .col-md-2
+      .right-sidebar
+        %h2 お勧めのユーザー
+        -# - @recommended_users.each do |user|
+        -#   = link_to user.name, user_path(user)
+        %h2 SNS情報
+        %p ここに情報を表示
