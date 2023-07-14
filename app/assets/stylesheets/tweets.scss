@@ -2,10 +2,33 @@
   h2 {
       color: #333;
       font-size: 2em;
+      width: 80%;
+      margin: 0 auto;
+      text-align: center
    }
 }
+
+
+.tweet-form {
     
+    
+    width: 80%;
+    margin: 20px auto;
+    border: 1px solid #ccc;
+    .tweet-text-area {
+      width: 100%; // 250pxの幅に合わせる
+      // 追加のスタイル設定があればここに書く
+    }
+}
+
+.new_tweet_container {
+    
+  
+}
+
 .tweet {
+  width: 80%;
+  margin: 0 auto;
   border: 1px solid #ccc;
   margin-bottom: 2em;
   padding: 1em;
@@ -23,14 +46,19 @@
      }
   }
 
+  .tweet_avatar_image {
+    width: 40px;
+  }
+
   .content {
     margin-top: 1em;
     p {
         font-size: 18px;
     }
     img {
-        width: 25%;
-    //   height: 50%;
+        width: 20%;
+        border-radius: 10px;
+        margin-right: 10px;
     }
   }
   
