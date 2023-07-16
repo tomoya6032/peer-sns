@@ -15,24 +15,24 @@
 
     -# = javascript_importmap_tags
  
-  %header.header
+  .header
     .header_logos
       .header_pagetitle
         .pagetitle
-          = link_to 'ホームtop', root_path
+          = link_to image_tag("icon1.jpeg", alt: "ホームtop", class: "logo"), root_path
       
+      .sitetitle 
+        %h1 ピアサポートSNS
+
       - if user_signed_in?
         .dropdown
-          = image_tag current_user.avatar_image, class: 'header_avatar dropbtn'
+          = image_tag current_user.avatar_image, class: 'header_avatar_dropbtn'
           .dropdown-content
             = link_to 'プロフィール', profile_path
             -# = link_to 'お気に入り', favorites_path
             = link_to 'ログアウト', destroy_user_session_path, data: { method: 'delete' }
       - else
         = link_to 'ログイン', new_user_session_path, class: 'header_loginBtn'
-    
-    .sitetitle 
-      %h1 ピアサポートSNS
 
     - if flash.present?
       .flash

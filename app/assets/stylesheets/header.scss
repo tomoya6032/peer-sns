@@ -1,0 +1,83 @@
+// @import 'variables';
+
+
+.header_logos {
+    display: flex;
+    justify-content: space-between;
+    background-color: #f4f5cf;
+}
+  
+
+.logo {
+    cursor: pointer;
+    border-radius: 20px;
+    width: 40px;
+   
+    margin: auto 60px;
+}
+
+
+
+.dropdown {
+    position: relative;
+    justify-content: flex-end;
+    margin: auto 0;
+    margin-top: 20px;
+    margin-right: 10px;
+    
+}
+
+.dropdown-content {
+    right: 10px;
+    visibility: hidden;
+    opacity: 0;
+    border-radius: 10px;
+    transition: visibility 0s, opacity 0.5s linear;
+    position: absolute;
+    background-color: #ffffff;
+    height: 80px;
+    z-index: 1;
+    padding: 0px; // 余白をなくすためのパディング設定
+    margin: 0px; // 余白をなくすためのマージン設定
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    a {
+        color: black;
+        padding: 8px 8px;
+        text-decoration: none;
+        width: 140px;
+        display: block;
+        text-align: center;
+    }
+
+    a:hover {
+        border-radius: 10px;
+        background-color: #e2dfdf;
+        text-decoration: none;
+        color: black;
+    }
+  }
+  
+.dropdown:hover .dropdown-content {
+   visibility: visible;
+   opacity: 1;
+
+}
+
+.dropdown-content a {
+    display: block;
+    
+}
+
+.header_avatar_dropbtn {
+    
+    cursor: pointer;
+    width: 80px;
+    margin-right: 30px;
+   
+
+    
+}
+
+.sitetitle {
+   margin: auto;
+}
