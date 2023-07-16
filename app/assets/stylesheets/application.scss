@@ -16,3 +16,67 @@
 //  @import 'toppage';
  
 @import 'tweets';
+@import 'header';
+
+html {
+    word-spacing: 1px;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    box-sizing: border-box;
+    height: 100%;
+}
+    
+*:before,
+*:after {
+    box-sizing: border-box;
+    margin: 0;  
+}
+    
+body {
+    height: 100%;
+    // background-color: rgb(46, 163, 246);
+    // font-size: 50px;
+    color: #000000;
+    font-size: 16px;
+    position: relative;
+    font-family: 'メイリオ', sans-serif;
+    
+}
+
+.btn-primary {
+  cursor: pointer;
+}
+
+.btn-save {
+  cursor: pointer;
+}
+
+.reply_container {
+  cursor: pointer;
+}
+
+.comment_container {
+  cursor: pointer;
+}
+
+
+
+// a {
+//     text-decoration: none;
+//     // color: $text-base-color;    
+// }
+
+
+a {
+    text-decoration: none;
+    color: #000000;
+}
+
+.logo {
+  width: 100px;
+  height: auto;
+  margin: 20px;
+  margin-left: 30px;
+}
