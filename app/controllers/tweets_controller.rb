@@ -1,5 +1,7 @@
 class TweetsController < ApplicationController
-    before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+    
+    before_action :set_tweet, only: [:show, :destroy]
+    before_action :authenticate_user!, only: [:new, :show, :create, :edit, :update, :destroy]
   
     def index
       @tweets = Tweet.all
@@ -14,6 +16,10 @@ class TweetsController < ApplicationController
     #   end
 
     end
+
+    def show
+        
+    end
   
     def create
       
@@ -27,9 +33,22 @@ class TweetsController < ApplicationController
         render :new
        end
     end
+
+    def destroy
+      if @tweet.user == current_user
+         @tweet.destroy
+         redirect_to tweets_path, notice: 'このツイートを削除しました'
+      else
+         redirect_to tweets_url, notice: 'このツイートは削除できません'
+      end
+    end
   
 
     private
+      def set_tweet
+        @tweet = Tweet.find(params[:id])
+      end
+
       def tweet_params
         params.require(:tweet).permit(:content, images: [])
       end

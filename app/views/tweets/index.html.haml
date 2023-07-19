@@ -14,7 +14,11 @@
           %li.nav-item
             = link_to root_path do
               = image_tag("home.jpeg", class: "home-image")
-              %span ホーム
+              %span サイトTOP
+          %li.nav-item
+            = link_to tweets_path do
+              = image_tag("home.jpeg", class: "home-image")
+              %span タイムライン
           %li.nav-item
             = link_to profile_path do
               = image_tag("pen.jpeg", class: "pen-image")
@@ -59,13 +63,19 @@
               - if tweet.images.attached?
                 - tweet.images.each do |image|
                   = image_tag image
+
+            - if current_user == tweet.user
+              = link_to '削除する', tweet_path(tweet), method: :delete, data: { confirm: '本当に削除してよろしいですか?' }
         
        
 
     .col-md-2
       .right-sidebar
-        %h2 お勧めのユーザー
+        %p おすすめユーザー
         -# - @recommended_users.each do |user|
         -#   = link_to user.name, user_path(user)
-        %h2 SNS情報
+        %p SNS情報
         %p ここに情報を表示
+    
+      .right-middle-sidebar
+        %p 検索
