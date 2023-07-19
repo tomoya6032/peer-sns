@@ -1,13 +1,78 @@
-.tweet_container
-  %ul
-    - @tweet.errors.full_messages.each do |message|
-      %li= message
-  = form_with(model: @tweet, local: true, multipart: true) do |form|
-    .field
-      = form.label :content
-      = form.text_area :content, required: true
-    .field
-      = form.label :images
-      = form.file_field :images, multiple: true
-    .actions
-      = form.submit "ツイートする"
+
+.top_container
+  %h2 みんなの想い
+
+
+
+
+.container
+  .row
+    .col-md-3
+      .left-sidebar
+        %ul.nav.flex-column
+          
+          %li.nav-item
+            = link_to root_path do
+              = image_tag("home.jpeg", class: "home-image")
+              %span サイトTOP
+          %li.nav-item
+            = link_to tweets_path do
+              = image_tag("home.jpeg", class: "home-image")
+              %span タイムライン
+          %li.nav-item
+            = link_to profile_path do
+              = image_tag("pen.jpeg", class: "pen-image")
+              %span プロフィール
+        -#   %li.nav-item= link_to 'ホーム', root_path
+        -#   %li.nav-item= link_to 'プロフィール', profile_path
+      .new_tweet_container
+        = link_to new_tweet_path do
+         
+          .tweet_new
+            = image_tag("pen2.jpeg", class: "pen2-image")
+            %p 新しいツイート
+    
+    .col-md-7
+      
+
+      .tweet_container
+        %ul
+        - @tweet.errors.full_messages.each do |message|
+          %li= message
+        = form_with(model: @tweet, local: true, multipart: true, html: { class: 'tweet-form' }) do |form|
+          .field
+            -# = form.label :content
+            = form.text_area :content, required: true, class: 'tweet-text-area', placeholder: "何をつぶやく？"
+          .field
+            -# = label_tag 'images', '画像を選択', class: 'tweet-image-label'
+            = form.file_field :images, multiple: true, id: 'tweet_image', class: 'tweet-image-upload'
+            %p#image-name 
+          .actions
+            = form.submit "ツイートする", class: 'tweet-submit-btn'
+
+        -# .tweet-index
+        -# - @tweets.order(created_at: :desc).each do |tweet|
+        -#   .tweet
+        -#     .user-info
+        -#       -# = image_tag @tweet.user.avatar_image
+        -#       = image_tag current_user.avatar_image, class: 'tweet_avatar_image'
+        -#       %h2= tweet.author_name
+        -#       %p= tweet.user.email
+        -#     .content
+        -#       %p= tweet.content
+        -#       - if tweet.images.attached?
+        -#         - tweet.images.each do |image|
+        -#           = image_tag image
+        
+       
+
+    .col-md-2
+      .right-sidebar
+        %p おすすめユーザー
+        -# - @recommended_users.each do |user|
+        -#   = link_to user.name, user_path(user)
+        %p SNS情報
+        %p ここに情報を表示
+    
+      .right-middle-sidebar
+        %p 検索
