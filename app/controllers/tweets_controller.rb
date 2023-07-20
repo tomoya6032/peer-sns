@@ -1,13 +1,20 @@
 class TweetsController < ApplicationController
     
     before_action :set_tweet, only: [:show, :destroy]
-    before_action :authenticate_user!, only: [:new, :show, :create, :edit, :update, :destroy]
+    before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   
     def index
       @tweets = Tweet.all
-      @tweet = current_user.tweets.build
+      # @tweet = current_user.tweets.build
+      @tweet = Tweet.new
     end
   
+
+    def show
+        
+    end
+
+
     def new
       @tweet = current_user.tweets.build
       
@@ -17,9 +24,7 @@ class TweetsController < ApplicationController
 
     end
 
-    def show
-        
-    end
+    
   
     def create
       
@@ -34,13 +39,30 @@ class TweetsController < ApplicationController
        end
     end
 
-    def destroy
-      if @tweet.user == current_user
-         @tweet.destroy
-         redirect_to tweets_path, notice: 'このツイートを削除しました'
+    def edit
+      @tweet = current_user.tweets.find(params[:id])
+      @user = @tweet.user  
+    
+    
+    end
+
+    def update
+      @tweet = current_user.tweets.find(params[:id])
+      
+      if @tweet.update(tweet_params)
+        redirect_to tweet_path(@tweet),notice: '更新できました'
       else
-         redirect_to tweets_url, notice: 'このツイートは削除できません'
+        flash.now[:error] = '更新できませんでした'
+        render :edit
       end
+
+    end
+
+    def destroy
+      tweet = current_user.tweets.find(params[:id])
+      tweet.destroy!
+      redirect_to tweets_path(@tweet), notice: '削除に成功しました'
+
     end
   
 
