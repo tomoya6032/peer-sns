@@ -54,8 +54,8 @@
         - @tweets.order(created_at: :desc).each do |tweet|
           .tweet
             .user-info
-              -# = image_tag @tweet.user.avatar_image
-              = image_tag current_user.avatar_image, class: 'tweet_avatar_image'
+              = image_tag tweet.user.avatar_image, class: 'tweet_avatar_image'
+              
               %h2= tweet.author_name
               %p= tweet.user.email
             .content
