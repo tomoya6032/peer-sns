@@ -4,16 +4,17 @@
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %title ピアSNS
     %meta{:content => "width=device-width,initial-scale=1", :name => "viewport"}/
-    -# = %csrf_meta_tags 
-    -# = csp_meta_tag
+    = csrf_meta_tags 
+    = csp_meta_tag
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
-    %head
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
     %link{rel: "stylesheet", href: "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"}
     %script{src: "https://code.jquery.com/jquery-3.3.1.slim.min.js"}
     %script{src: "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"}
     %script{src: "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"}
+    
 
-    -# = javascript_importmap_tags
+   
  
   .header
     .header_logos
