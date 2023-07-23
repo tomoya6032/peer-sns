@@ -1,0 +1,13 @@
+.reply_container
+  .tweet
+    .user_info
+      = image_tag @tweet.user.avatar, class: 'avatar'
+      %h2= @tweet.user.name
+    .content
+      %p= @tweet.content
+  .reply_form
+    = form_with(model: @reply, url: tweet_replies_path(@tweet), local: true) do |f|
+      .field
+        = f.text_area :content, required: true, class: 'reply-text-area', placeholder: "リプライを入力..."
+      .actions
+        = f.submit "リプライを送信", class: 'reply-submit-btn'
