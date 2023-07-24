@@ -49,8 +49,8 @@
             %p#image-name 
           .actions
             -# = link_to 'Reply', new_tweet_reply_path(tweet_id: @tweet.id), class: 'tweet-reply-btn'
-            - @tweets.each do |tweet|
-              = link_to 'Reply', new_tweet_reply_path(@tweet), class: 'tweet-reply-btn'
+            
+            = link_to 'Reply', new_tweet_reply_path(@tweets), class: 'tweet-reply-btn'
 
             -# = link_to 'Like', like_tweet_path(@tweet), method: :post, class: 'tweet-like-btn'
             = form.submit "ツイートする", class: 'tweet-submit-btn'

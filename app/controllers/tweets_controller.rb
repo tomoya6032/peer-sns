@@ -1,6 +1,6 @@
 class TweetsController < ApplicationController
     
-    before_action :set_tweet, only: [:show]
+    before_action :set_tweet, only: [:show, :edit, :update, :destroy]
     before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   
     def index
@@ -59,8 +59,8 @@ class TweetsController < ApplicationController
     end
 
     def destroy
-      tweet = current_user.tweets.find(params[:id])
-      tweet.destroy!
+      # tweet = current_user.tweets.find(params[:id])
+      @tweet.destroy!
       redirect_to tweets_path, notice: '削除に成功しました'
 
     end

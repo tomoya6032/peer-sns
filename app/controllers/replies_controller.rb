@@ -1,29 +1,29 @@
 class RepliesController < ApplicationController
-    before_action :set_tweet
+    before_action :set_tweet, only: [:index, :show, :new, :create]
 
 
   def index          
    
-   replies = tweet.replies
+    @replies = @tweet.replies
 #    render json: replies.to_json(include: :user)  
   end
 
   def show
     
-    @replies = tweet.replies
+    @replies = @tweet.replies
     @reply = @replies.find(params[:id])
     
   end
 
   def new
-    
-    @reply = tweet.replies.build
+    @reply = @tweet.replies.build
 
   end
   
   def create
     @reply = @tweet.replies.build(reply_params)
-    @reply.user_id = current_user.id
+    @reply.user = current_user
+
     if @reply.save
       # リプライが保存された後の処理
       redirect_to @tweet
