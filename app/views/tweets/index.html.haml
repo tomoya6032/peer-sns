@@ -63,13 +63,16 @@
               - if tweet.images.attached?
                 - tweet.images.each do |image|
                   = image_tag image
-
+            
+            
             = link_to 'Reply', new_tweet_reply_path(tweet), class: 'tweet-reply-btn' 
             -# = link_to 'Reply', new_tweet_reply_path(@tweets), class: 'tweet-reply-btn' 
             -# = link_to 'Like', like_tweet_path(@tweet), method: :post, class: 'tweet-like-btn'
+          
 
+          
             - if current_user == tweet.user
-              = link_to '削除する', tweet_path(tweet), method: :delete, data: { confirm: '本当に削除してよろしいですか?' }
+              = link_to '削除する', tweet_path(tweet), method: :delete, data: { confirm: '本当に削除してよろしいですか?' }, class: 'tweet-delete-btn'
 
         
         
