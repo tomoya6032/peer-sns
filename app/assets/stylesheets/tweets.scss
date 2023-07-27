@@ -41,8 +41,15 @@
     }
 }
 
+.tweet-reply-btn {
+    display: inline-block;
+     margin: 20px 20px;
+}
 
-
+.tweet-delete-btn {
+    float: right;
+    margin: 20px auto;
+}
   
 
 .home-image {
@@ -89,6 +96,7 @@ li.nav-item a {
 
 .tweet {
   width: 90%;
+//   height: 100%;
   margin: 0 auto;
   border: 1px solid #ccc;
   margin-bottom: 1em;
