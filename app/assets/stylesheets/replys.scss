@@ -1,0 +1,74 @@
+.reply_container {
+    width: 90%;
+  //   height: 100%;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    margin-bottom: 1em;
+    padding: 1em;
+    .user-info {
+       display: flex;
+       align-items: center;
+       h2 {
+          font-size: 18px;
+          margin-left: 0.5em;
+       }
+       p {
+          font-size: 0.8em;
+          color: #666;
+          margin-left: 0.5em;
+       }
+    }
+  
+    .tweet_avatar_image {
+      width: 40px;
+    }
+  
+    .content {
+      margin-top: 1em;
+      p {
+          font-size: 18px;
+      }
+      img {
+          width: 20%;
+          border-radius: 10px;
+          margin-right: 10px;
+      }
+    }
+    
+  }
+
+.reply-text-area {
+
+}
+
+.reply_form { 
+    width: 90%;
+    margin: 20px auto;
+    // border: 1px solid #ccc;
+    .reply-text-area {
+      width: 100%; // 250pxの幅に合わせる
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    // .tweet-image-upload {
+    //     // display: none;
+    // }
+    // .actions {
+    //     text-align: right; /* 追加 */
+    // }
+    .reply-submit-btn {
+        background-color: #1da1f2;
+        color: #fff;
+        border-radius: 20px;
+        border: none;
+        padding: 10px 20px;
+        font-weight: bold;
+        
+        cursor: pointer;
+        &:hover {
+          background-color: #0c85d0;
+        }
+    }
+}

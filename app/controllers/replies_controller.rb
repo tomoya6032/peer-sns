@@ -1,10 +1,10 @@
 class RepliesController < ApplicationController
-    before_action :set_tweet, only: [:index, :show, :new, :create]
-
+    before_action :set_reply, only: [:show, :create, :destroy]
+    before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def index          
    
-    @replies = @tweet.replies
+    replies = tweet.replies
 #    render json: replies.to_json(include: :user)  
   end
 
@@ -16,6 +16,8 @@ class RepliesController < ApplicationController
   end
 
   def new
+    @tweet = Tweet.find(params[:tweet_id])
+    
     @reply = @tweet.replies.build
 
   end
@@ -45,9 +47,14 @@ class RepliesController < ApplicationController
 
   private
 
-  def set_tweet
-    @tweet = Tweet.find(params[:tweet_id])
+  def set_reply
+    @reply = Reply.find(params[:id])
   end
+
+#   def set_tweet
+#     @tweet = Tweet.find(params[:tweet_id])
+#   end
+
 
   def reply_params
     params.require(:reply).permit(:content)
