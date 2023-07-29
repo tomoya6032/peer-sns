@@ -47,6 +47,7 @@
 
       .reply_form
         = form_with(model: @reply, url: tweet_replies_path(@tweet), local: true) do |f|
+          = f.hidden_field :tweet_id, value: @tweet.id
           .field
             = f.text_area :content, required: true, class: 'reply-text-area', placeholder: "リプライを入力..."
           .actions

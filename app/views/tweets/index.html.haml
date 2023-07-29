@@ -52,27 +52,28 @@
 
         .tweet-index
         - @tweets.order(created_at: :desc).each do |tweet|
-          .tweet
-            .user-info
-              = image_tag tweet.user.avatar_image, class: 'tweet_avatar_image'
+          = link_to tweet_path(tweet) do
+            .tweet
+              .user-info
+                = image_tag tweet.user.avatar_image, class: 'tweet_avatar_image'
+                
+                %h2= tweet.author_name
+                %p= tweet.user.email
+              .content
+                %p= tweet.content
+                - if tweet.images.attached?
+                  - tweet.images.each do |image|
+                    = image_tag image
+              = link_to '詳細を見る', tweet_path(tweet), class: 'tweet-detail-link'
               
-              %h2= tweet.author_name
-              %p= tweet.user.email
-            .content
-              %p= tweet.content
-              - if tweet.images.attached?
-                - tweet.images.each do |image|
-                  = image_tag image
+              = link_to 'Reply', new_tweet_reply_path(tweet), class: 'tweet-reply-btn' 
+              -# = link_to 'Reply', new_tweet_reply_path(@tweets), class: 'tweet-reply-btn' 
+              -# = link_to 'Like', like_tweet_path(@tweet), method: :post, class: 'tweet-like-btn'
             
-            
-            = link_to 'Reply', new_tweet_reply_path(tweet), class: 'tweet-reply-btn' 
-            -# = link_to 'Reply', new_tweet_reply_path(@tweets), class: 'tweet-reply-btn' 
-            -# = link_to 'Like', like_tweet_path(@tweet), method: :post, class: 'tweet-like-btn'
-          
 
-          
-            - if current_user == tweet.user
-              = link_to '削除する', tweet_path(tweet), method: :delete, data: { confirm: '本当に削除してよろしいですか?' }, class: 'tweet-delete-btn'
+            
+              - if current_user == tweet.user
+                = link_to '削除する', tweet_path(tweet), method: :delete, data: { confirm: '本当に削除してよろしいですか?' }, class: 'tweet-delete-btn'
 
         
         

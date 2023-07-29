@@ -1,6 +1,7 @@
 class RepliesController < ApplicationController
-    before_action :set_reply, only: [:show, :create, :destroy]
+    before_action :set_reply, only: [:show]
     before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+    before_action :set_tweet, only: [:show, :new, :create] 
 
   def index          
    
@@ -10,13 +11,13 @@ class RepliesController < ApplicationController
 
   def show
     
-    @replies = @tweet.replies
-    @reply = @replies.find(params[:id])
+    @replies = @tweet.replies.order(created_at: :desc)
+    @reply = Reply.new
     
   end
 
   def new
-    @tweet = Tweet.find(params[:tweet_id])
+    # @tweet = Tweet.find(params[:tweet_id])
     
     @reply = @tweet.replies.build
 
@@ -51,9 +52,9 @@ class RepliesController < ApplicationController
     @reply = Reply.find(params[:id])
   end
 
-#   def set_tweet
-#     @tweet = Tweet.find(params[:tweet_id])
-#   end
+  def set_tweet
+    @tweet = Tweet.find(params[:tweet_id])
+  end
 
 
   def reply_params

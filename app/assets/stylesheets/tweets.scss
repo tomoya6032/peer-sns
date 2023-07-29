@@ -133,4 +133,13 @@ li.nav-item a {
   
 }
 
-  
+.tweet a {
+    color: #333; /* 好みの色を指定してください */
+    text-decoration: none; /* 下線を非表示にする */
+}
+      
+/* リンクをマウスオーバーした際の色を変更 */
+.tweet a:hover {
+    color: #333; /* 好みの色を指定してください */
+    text-decoration: none; /* 下線を非表示にする */
+}
