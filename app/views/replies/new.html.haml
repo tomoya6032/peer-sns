@@ -1,13 +1,65 @@
-.reply_container
-  .tweet
-    .user_info
-      = image_tag @tweet.user.avatar, class: 'avatar'
-      %h2= @tweet.user.name
-    .content
-      %p= @tweet.content
-  .reply_form
-    = form_with(model: @reply, url: tweet_replies_path(@tweet), local: true) do |f|
-      .field
-        = f.text_area :content, required: true, class: 'reply-text-area', placeholder: "リプライを入力..."
-      .actions
-        = f.submit "リプライを送信", class: 'reply-submit-btn'
+.top_container
+  %h2 みんなの想い
+
+
+
+
+.container
+  .row
+    .col-md-3
+      .left-sidebar
+        %ul.nav.flex-column
+          
+          %li.nav-item
+            = link_to root_path do
+              = image_tag("home.jpeg", class: "home-image")
+              %span サイトTOP
+          %li.nav-item
+            = link_to tweets_path do
+              = image_tag("home.jpeg", class: "home-image")
+              %span タイムライン
+          %li.nav-item
+            = link_to profile_path do
+              = image_tag("pen.jpeg", class: "pen-image")
+              %span プロフィール
+        -#   %li.nav-item= link_to 'ホーム', root_path
+        -#   %li.nav-item= link_to 'プロフィール', profile_path
+      .new_tweet_container
+        = link_to new_tweet_path do
+         
+          .tweet_new
+            = image_tag("pen2.jpeg", class: "pen2-image")
+            %p 新しいツイート
+    
+    .col-md-7
+
+      .reply_container
+        .user-info
+          = image_tag @tweet.user.avatar_image, class: 'tweet_avatar_image' 
+
+          %h2= @tweet.author_name
+          %p= @tweet.user.email
+        .content
+          %p= @tweet.content
+          - if @tweet.images.attached?
+            - @tweet.images.each do |image|
+              = image_tag image
+
+      .reply_form
+        = form_with(model: @reply, url: tweet_replies_path(@tweet), local: true) do |f|
+          .field
+            = f.text_area :content, required: true, class: 'reply-text-area', placeholder: "リプライを入力..."
+          .actions
+            = f.submit "リプライを送信", class: 'reply-submit-btn'
+
+
+    .col-md-2
+      .right-sidebar
+        %p おすすめユーザー
+        -# - @recommended_users.each do |user|
+        -#   = link_to user.name, user_path(user)
+        %p SNS情報
+        %p ここに情報を表示
+    
+      .right-middle-sidebar
+        %p 検索
