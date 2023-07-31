@@ -70,6 +70,7 @@
           - if current_user == @tweet.user
             = link_to '削除する', tweet_path(@tweet), method: :delete, data: { confirm: '本当に削除してよろしいですか?' }
 
+
         .reply-list
           %h3 リプライ一覧
           - if @replies.present?
@@ -81,8 +82,11 @@
                   %p= reply.user.email
                 .content
                   %p= reply.content
+                  
           - else
             %p リプライはまだありません  
+        
+        
 
 
 
