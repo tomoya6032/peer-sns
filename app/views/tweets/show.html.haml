@@ -16,10 +16,6 @@
 -#         -# = link_to 'Like', like_tweet_path(@tweet), method: :post, class: 'tweet-like-btn'
 -#         = form.submit "ツイートする", class: 'tweet-submit-btn'
 
-.top_container
-  %h2 みんなの想い
-
-
 
 
 .container
@@ -49,8 +45,9 @@
             = image_tag("pen2.jpeg", class: "pen2-image")
             %p 新しいツイート
     
-    .col-md-7
-
+    .col-md-6
+      .top_container
+        %h2 みんなの想い
       .tweet-index
         -# - @tweets.order(created_at: :desc).each do |tweet|
         .tweet
@@ -78,7 +75,7 @@
               .reply
                 .user-info
                   = image_tag reply.user.avatar_image, class: 'reply_avatar_image'
-                  %h4= reply.user.name
+                  %h4= @reply.author_name
                   %p= reply.user.email
                 .content
                   %p= reply.content
@@ -90,7 +87,7 @@
 
 
 
-    .col-md-2
+    .col-md-3
       .right-sidebar
         %p おすすめユーザー
         -# - @recommended_users.each do |user|
