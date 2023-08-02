@@ -26,4 +26,8 @@ class Tweet < ApplicationRecord
     end
   end
 
+  def like_count
+    likes.count
+  end
+
 end
