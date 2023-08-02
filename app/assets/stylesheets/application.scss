@@ -87,3 +87,16 @@ a {
   margin: 20px;
   margin-left: 30px;
 }
+
+.tweet-like-btn {
+  background-image: url("heart.svg"); /* 通常のハートの画像を指定 */
+  width: 24px; /* 必要な幅と高さに適宜調整 */
+  height: 24px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.tweet-liked {
+  background-image: url("heart-active.svg"); /* カラーのついたハートの画像を指定 */
+}

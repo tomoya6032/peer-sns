@@ -79,6 +79,10 @@
                   %p= reply.user.email
                 .content
                   %p= reply.content
+
+                - if current_user == reply.user
+                  = link_to '削除する', tweet_reply_path(reply), method: :delete, data: { confirm: '本当に削除してよろしいですか?' }, class: 'reply-delete-btn'
+                
                   
           - else
             %p リプライはまだありません  
