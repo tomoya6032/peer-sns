@@ -26,9 +26,19 @@ require("@rails/activestorage").start()
 require("trix")
 require("@rails/actiontext")
 
+import $ from 'jquery'
+import axios from 'axios'
+
 // document.addEventListener('DOMContentLoaded', () => {
 //     window.alert('DOM LOADED')
 // })
 
+// document.addEventListener('DOMContentLoaded', () => {
+//     $(`.content`).on(`click`, () => {
+//       window.alert('clicked')
+//     })
+// })
+
 //= require jquery
 //= require like_count
+

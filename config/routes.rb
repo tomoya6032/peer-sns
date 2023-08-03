@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   root to: "toppage#index"
 
   resources :tweets do
-    resource :likes, only: [:create, :destroy]
+    resource :likes, only: [:show, :create, :destroy]
     resources :replies, only: [:index, :new, :show, :create, :destroy]
   end
   # root "tweets#index"
