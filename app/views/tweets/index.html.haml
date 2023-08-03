@@ -70,12 +70,13 @@
               = link_to 'Reply', new_tweet_reply_path(tweet), class: 'tweet-reply-btn' 
               -# = link_to 'Reply', new_tweet_reply_path(@tweets), class: 'tweet-reply-btn' 
               -# = link_to 'Like', tweet_likes_path(tweet), method: :post, class: 'tweet-like-btn'
-              .article_reactions
+              .tweet_reactions
                 - if user_signed_in?
-                  .tweet_heart.hidden.active-heart
-                    = image_tag 'heart-active.svg'  
-                  .tweet_heart.hidden.inactive-heart
-                    = image_tag 'heart.svg'
+                  = link_to tweet_likes_path(tweet), method: :post, remote: true, class: 'tweet-like-btn' do
+                    .tweet_heart.hidden.active-heart
+                      = image_tag 'heart-active.svg'  
+                    .tweet_heart.hidden.inactive-heart
+                      = image_tag 'heart.svg'
               
               
               .tweet_heart_count 
