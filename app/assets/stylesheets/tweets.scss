@@ -152,3 +152,19 @@ li.nav-item a {
     color: #333; /* 好みの色を指定してください */
     text-decoration: none; /* 下線を非表示にする */
 }
+
+.reactions {
+    display: flex;
+    align-items: center; /* 垂直方向の中央揃え */
+}
+
+// .tweet_reactions {
+//     display: flex;    
+//     align-items: center; /* 垂直方向の中央揃え */
+// }
+
+.tweet_reactions {
+    display: flex;
+    margin-left: 30px;
+    align-items: center;
+}
