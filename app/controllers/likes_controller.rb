@@ -6,17 +6,19 @@ class LikesController < ApplicationController
       tweet = Tweet.find(params[:tweet_id])
       like_status = current_user.has_liked?(tweet)
       render json: { hasLiked: like_status }
+      
     end
 
     def create
-      @like = current_user.likes.build(tweet_id: params[:tweet_id])
-      @like.save
-      redirect_to tweets_path
+      tweet = Tweet.find(params[:tweet_id])
+      tweet.likes.create!(user_id: current_user.id)
+      render json: { status: 'ok' }
     end
   
     def destroy
-      @like = Like.find_by(tweet_id: params[:tweet_id], user_id: current_user.id)
-      @like.destroy
-      redirect_to tweets_path
+      tweet = Tweet.find(params[:tweet_id])
+      like = tweet.likes.find_by!(user_id: current_user.id)
+      like.destroy!
+      render json: { status: 'ok' }
     end
 end

@@ -13,7 +13,7 @@
 require("@rails/ujs").start()
 // require("turbolinks").start()
 require("@rails/activestorage").start()
-// require("channels")
+require("channels")
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
@@ -26,8 +26,28 @@ require("@rails/activestorage").start()
 require("trix")
 require("@rails/actiontext")
 
-import $ from 'jquery'
-import axios from 'axios'
+// import $ from 'jquery'
+// import axios from 'axios'
+
+// document.addEventListener('turbolinks:load', () => {
+//     const dataset = $('#tweet-show').data()
+//     const tweetId = dataset.tweetId; 
+//     // 「いいね！」ボタンの状態を表示
+//     axios.get(`/tweets/${tweetId}/like`)
+//       .then((response) => {
+//         const hasLiked = response.data.hasLiked
+//         if (hasLiked) {
+//           $('.active-heart').removeClass('hidden')
+//         } else {
+//           $('.inactive-heart').removeClass('hidden')
+//         }
+//       })
+  
+//     listenInactiveHeratEvent(tweetId);
+//     listenActiveHeratEvent(tweetId);
+// })
+  
+
 
 // document.addEventListener('DOMContentLoaded', () => {
 //     window.alert('DOM LOADED')

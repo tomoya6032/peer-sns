@@ -22,7 +22,9 @@ class User < ApplicationRecord
     profile&.nickname.presence || self.email.split('@').first
   end
 
-  
+  def has_liked?(tweet)
+    likes.exists?(tweet_id: tweet.id)
+  end
   
   def avatar_image
     if profile&.avatar&.attached?

@@ -50,7 +50,7 @@
         %h2 みんなの想い
       .tweet-index
         -# - @tweets.order(created_at: :desc).each do |tweet|
-        .tweet
+        .tweet#tweet-show{data: {tweet_id: @tweet.id}}
           .user-info
             = image_tag @tweet.user.avatar_image, class: 'tweet_avatar_image'
             %h2= @tweet.author_name
@@ -61,11 +61,22 @@
               - @tweet.images.each do |image|
                 = image_tag image
 
-          = link_to 'Reply', new_tweet_reply_path(@tweet), class: 'tweet-reply-btn' 
+          .reactions   
+            = link_to 'Reply', new_tweet_reply_path(@tweet), class: 'tweet-reply-btn' 
+            -# = link_to 'Reply', new_tweet_reply_path(@tweets), class: 'tweet-reply-btn' 
+            -# = link_to 'Like', tweet_likes_path(tweet), method: :post, class: 'tweet-like-btn'
+            .tweet_reactions
+              - if user_signed_in?
+                .tweet_heart.hidden.active-heart
+                  = image_tag 'heart-active.svg'  
+                .tweet_heart.hidden.inactive-heart
+                  = image_tag 'heart.svg'  
+                .tweet_heart_count 
+                  = @tweet.like_count
 
-
-          - if current_user == @tweet.user
-            = link_to '削除する', tweet_path(@tweet), method: :delete, data: { confirm: '本当に削除してよろしいですか?' }
+            
+            - if current_user == @tweet.user
+              = link_to '削除する', tweet_path(@tweet), method: :delete, data: { confirm: '本当に削除してよろしいですか?' }, class: 'tweet-delete-btn'
 
 
         .reply-list
@@ -101,3 +112,5 @@
     
       .right-middle-sidebar
         %p 検索   
+
+= javascript_pack_tag 'tweet' 
