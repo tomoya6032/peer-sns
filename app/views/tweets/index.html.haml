@@ -71,13 +71,21 @@
                 -# = link_to 'Reply', new_tweet_reply_path(@tweets), class: 'tweet-reply-btn' 
                 -# = link_to 'Like', tweet_likes_path(tweet), method: :post, class: 'tweet-like-btn'
                 .tweet_reactions
-                  - if user_signed_in?
-                    .tweet_heart.hidden.active-heart
-                      = image_tag 'heart-active.svg'  
-                    .tweet_heart.hidden.inactive-heart
-                      = image_tag 'heart.svg'  
-                    .tweet_heart_count 
-                      = @tweet.like_count
+                  - if current_user.already_liked?(tweet)
+                    = button_to tweet_like_path(id: tweet.id, tweet_id: tweet.id), method: :delete, remote: true, class: 'like-button' do
+                      = image_tag 'heart-active.svg', class: 'heart-icon'
+                  - else
+                    = button_to tweet_like_path(id: tweet.id, tweet_id: tweet.id), method: :post, remote: true, class: 'like-button' do
+                      = image_tag 'heart.svg', class: 'heart-icon'
+
+
+                  -# - if user_signed_in?
+                  -#   .tweet_heart.hidden.active-heart
+                  -#     = image_tag 'heart-active.svg'  
+                  -#   .tweet_heart.hidden.inactive-heart
+                  -#     = image_tag 'heart.svg'  
+                  -#   .tweet_heart_count 
+                  -#     = @tweet.like_count
 
             
                 - if current_user == tweet.user

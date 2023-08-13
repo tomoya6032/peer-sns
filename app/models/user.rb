@@ -7,6 +7,7 @@ class User < ApplicationRecord
 
   has_many :tweets, dependent: :destroy
   has_many :likes, dependent: :destroy
+  has_many :liked_posts, through: :likes, source: :post
   has_one :profile, dependent: :destroy
   has_many :replies, dependent: :destroy
   has_one_attached :avatar, dependent: :destroy
@@ -32,6 +33,10 @@ class User < ApplicationRecord
     else
       'default-avatar.png'
     end
+  end
+
+  def already_liked?(tweet)
+    self.likes.exists?(tweet_id: tweet.id)
   end
 
   # def avatar_image
