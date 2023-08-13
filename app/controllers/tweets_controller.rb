@@ -11,7 +11,7 @@ class TweetsController < ApplicationController
   
 
     def show
-     
+      
       @reply = Reply.find_by(id: params[:id])
       # @user = User.find_by(id: @reply.user_id)
       @user = @tweet.user 

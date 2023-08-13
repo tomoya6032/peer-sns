@@ -86,7 +86,7 @@
               .reply
                 .user-info
                   = image_tag reply.user.avatar_image, class: 'reply_avatar_image'
-                  %h4= @reply.author_name
+                  %h4= reply.author_name
                   %p= reply.user.email
                 .content
                   %p= reply.content

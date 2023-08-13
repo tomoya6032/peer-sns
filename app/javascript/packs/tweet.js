@@ -29,45 +29,46 @@ const appendNewComment = (comment) => {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  const dataset = document.getElementById('tweet-show').dataset;
-  const tweetId = dataset.tweetId;
-
-  // axios.get(`/articles/${articleId}/comments`)
-  //   .then((response) => {
-  //     const comments = response.data;
-  //     comments.forEach((comment) => {
-  //       appendNewComment(comment);
-  //     });
+    const dataset = document.getElementById('tweet-show').dataset;
+    const tweetId = dataset.tweetId;
+  
+    // axios.get(`/articles/${articleId}/comments`)
+    //   .then((response) => {
+    //     const comments = response.data;
+    //     comments.forEach((comment) => {
+    //       appendNewComment(comment);
+    //     });
+    //   });
+  
+  //   handleCommentForm();
+  
+  //   $('.add-comment-button').on('click', () => {
+  //     const content = $('#comment_content').val();
+  //     if (!content) {
+  //       window.alert('コメントを入力してください');
+  //     } else {
+  //       axios.post(`/articles/${articleId}/comments`, {
+  //           comment: { content: content }
+  //         })
+  //         .then((res) => {
+  //           const comment = res.data;
+  //           appendNewComment(comment);
+  //           $('#comment_content').val('');
+  //         })
+  //         .catch((error) => {
+  //           console.log(error);
+  //         });
+  //     }
   //   });
-
-//   handleCommentForm();
-
-//   $('.add-comment-button').on('click', () => {
-//     const content = $('#comment_content').val();
-//     if (!content) {
-//       window.alert('コメントを入力してください');
-//     } else {
-//       axios.post(`/articles/${articleId}/comments`, {
-//           comment: { content: content }
-//         })
-//         .then((res) => {
-//           const comment = res.data;
-//           appendNewComment(comment);
-//           $('#comment_content').val('');
-//         })
-//         .catch((error) => {
-//           console.log(error);
-//         });
-//     }
-//   });
-
-  // 「いいね！」ボタンの状態を表示
-  axios.get(`/tweets/${tweetId}/like`)
-    .then((response) => {
-      const hasLiked = response.data.hasLiked;
-      handleHeartDisplay(hasLiked);
-    });
-
-  listenInactiveHeratEvent(tweetId);
-  listenActiveHeratEvent(tweetId);
-});
+  
+    // 「いいね！」ボタンの状態を表示
+    axios.get(`/tweets/${tweetId}/like`)
+      .then((response) => {
+        const hasLiked = response.data.hasLiked;
+        handleHeartDisplay(hasLiked);
+      });
+  
+    listenInactiveHeratEvent(tweetId);
+    listenActiveHeratEvent(tweetId);
+  });
+  
