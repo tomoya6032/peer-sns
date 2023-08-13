@@ -5,9 +5,9 @@ class Tweet < ApplicationRecord
   # validate :validate_title_and_content_length
   
   belongs_to :user
-  has_many :likes
-  has_many :replies
-  has_many_attached :images
+  has_many :likes, dependent: :destroy
+  has_many :replies, dependent: :destroy
+  has_many_attached :images, dependent: :destroy
   # mount_uploader :image, ImageUploader
 
   def display_created_at
