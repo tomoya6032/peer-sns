@@ -2,6 +2,17 @@ class LikesController < ApplicationController
     before_action :authenticate_user!
   
 
+    def index
+      tweets = Tweet.all # または適切な条件でツイートを取得
+      likes = current_user.likes.where(tweet_id: tweets.pluck(:id))
+  
+      likes_hash = likes.each_with_object({}) do |like, hash|
+        hash[like.tweet_id] = true
+      end
+  
+      render json: likes_hash
+    end
+
     def show
       tweet = Tweet.find(params[:tweet_id])
       like_status = current_user.has_liked?(tweet)

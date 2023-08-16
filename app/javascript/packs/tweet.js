@@ -29,6 +29,46 @@ const appendNewComment = (comment) => {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    const likeButtons = document.querySelectorAll('.like-button');
+  
+    likeButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        location.reload(); // ページをリロードする
+      });
+    });
+  });
+  
+  
+  
+  
+
+// document.addEventListener('DOMContentLoaded', () => {
+//     const likeButtons = document.querySelectorAll('.like-button');
+  
+//     likeButtons.forEach(button => {
+//       button.addEventListener('click', event => {
+//         event.preventDefault(); // リンクのデフォルトの動作を無効にする
+  
+//         const url = event.target.getAttribute('href');
+//         const method = event.target.getAttribute('data-method');
+        
+//         axios({
+//           method: method,
+//           url: url,
+//           responseType: 'json'
+//         })
+//         .then(response => {
+//           // ここで必要なUIの変更を行う
+//         })
+//         .catch(error => {
+//           console.error(error);
+//         });
+//       });
+//     });
+//   });
+  
+
+document.addEventListener('DOMContentLoaded', () => {
     const dataset = document.getElementById('tweet-show').dataset;
     const tweetId = dataset.tweetId;
   
