@@ -1,0 +1,24 @@
+.profile-container
+  .user-info
+    = image_tag @user.avatar, class: 'profile-avatar'
+    %h2= @user.name
+    %p= @user.bio
+    %p= @user.location
+  .user-stats
+    %p
+      %strong= @user.tweets.count
+      ツイート
+    %p
+      %strong= @user.followers.count
+      フォロワー
+    %p
+      %strong= @user.following.count
+      フォロー中
+  .tweets
+    - @user.tweets.each do |tweet|
+      .tweet
+        .content
+          %p= tweet.content
+        .actions
+          = link_to 'いいね', like_tweet_path(tweet), method: :post
+          = link_to 'リプライ', new_reply_path(tweet_id: tweet.id)

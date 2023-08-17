@@ -1,8 +1,10 @@
 class ProfilesController < ApplicationController
     before_action :set_profile, only: [:show, :edit, :update, :destroy]
+    before_action :authenticate_user!
 
     # GET /profiles/1
     def show
+      @profile = current_user.profile
     end
   
     # GET /profiles/new
@@ -40,13 +42,20 @@ class ProfilesController < ApplicationController
     end
   
     private
-    # Use callbacks to share common setup or constraints between actions.
     def set_profile
-      @profile = Profile.find(params[:id])
+      @profile = Profile.find_by(user_id: current_user.id)
+      if @profile.nil?
+        redirect_to new_profile_path, notice: 'プロフィールを作成してください'
+      end
     end
+
+    # Use callbacks to share common setup or constraints between actions.
+    # def set_profile
+    #   @profile = Profile.find(params[:id])
+    # end
   
     # Only allow a trusted parameter "white list" through.
     def profile_params
-      params.require(:profile).permit(:name, :bio, :location)
+      params.require(:profile).permit(:name, :content, :location)
     end
 end
