@@ -1,0 +1,17 @@
+.profile-create-container
+  %h2 プロフィールを作成
+  = form_with(model: @profile, url: profile_path, method: 'put', local: true) do |f|
+    .field
+      = form.label :name
+      = form.text_field :name, required: true
+    .field
+      = form.label :profile
+      = form.text_area :profile
+    .field
+      = form.label :location
+      = form.text_field :location
+    .field
+      = form.label :avatar
+      = form.file_field :avatar, id: 'user_avatar'
+    .actions
+      = form.submit "保存する", class: 'profile-submit-btn'

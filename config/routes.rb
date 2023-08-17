@@ -14,6 +14,6 @@ Rails.application.routes.draw do
   end
   # root "tweets#index"
 
-  resource :profile, only: [:show, :edit, :update]
+  resource :profile, only: [:show, :new, :create, :edit, :update]
 
 end

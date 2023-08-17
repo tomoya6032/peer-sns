@@ -1,0 +1,111 @@
+/* プロフィールページ全体のスタイル */
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+  
+/* ユーザーの情報エリア */
+.user-info {
+  text-align: center;
+}
+
+/* プロフィール写真 */
+.profile-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+/* ユーザーの統計情報エリア */
+.user-stats {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10px;
+}
+
+/* ツイートの表示エリア */
+.tweets {
+  margin-top: 20px;
+}
+
+/* 個々のツイートのスタイル */
+.tweet {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+/* ツイートの本文 */
+.content {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+/* アクションボタンのスタイル */
+.actions a {
+  margin-right: 10px;
+  color: blue;
+  text-decoration: none;
+}
+
+/* プロフィール編集画面のスタイル */
+.profile-create-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+//   text-align: center; /* 中央寄せ */
+//   width: 80%;
+}
+
+/* フォームのフィールドのスタイル */
+.field {
+  margin-bottom: 15px;
+}
+
+/* ラベルのスタイル */
+.field label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+/* テキストフィールドとテキストエリアのスタイル */
+.field input[type="text"],
+.field textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* 送信ボタンのスタイル */
+.actions {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.actions input[type="submit"] {
+  padding: 10px 20px;
+  background-color: #1da1f2;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* プロフィール写真のスタイル */
+#user_avatar {
+  display: block;
+  margin-bottom: 10px;
+}
+
+/* 画像が表示される領域のスタイル */
+.profile-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
