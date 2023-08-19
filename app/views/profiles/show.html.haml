@@ -1,24 +1,55 @@
 .profile-container
   .user-info
-    = image_tag @user.avatar, class: 'profile-avatar'
-    %h2= @user.name
-    %p= @user.bio
-    %p= @user.location
+    = image_tag current_user.avatar_image, class: 'profile-avatar'
+    %h2= @profile.name
+    %p= @profile.bio
+    %p= @profile.location
   .user-stats
     %p
-      %strong= @user.tweets.count
+      -#   %strong= @profile.tweets.count
       ツイート
     %p
-      %strong= @user.followers.count
+      -#   %strong= @profile.followers.count
       フォロワー
     %p
-      %strong= @user.following.count
+      -#   %strong= @userr.following.count
       フォロー中
   .tweets
-    - @user.tweets.each do |tweet|
+    -# - @user.tweets.each do |tweet|
+    - current_user.tweets.order(created_at: :desc).each do |tweet|
       .tweet
+        .user-info
+          = image_tag tweet.user.avatar_image, class: 'tweet_avatar_image'
+          %h2= tweet.author_name
+          %p= tweet.user.email
         .content
           %p= tweet.content
-        .actions
-          = link_to 'いいね', like_tweet_path(tweet), method: :post
-          = link_to 'リプライ', new_reply_path(tweet_id: tweet.id)
+          - if tweet.images.attached?
+            - tweet.images.each do |image|
+              = image_tag image
+
+        -# .reactions   
+        -#   = link_to 'Reply', new_tweet_reply_path(@tweet), class: 'tweet-reply-btn' 
+        -#     -# = link_to 'Reply', new_tweet_reply_path(@tweets), class: 'tweet-reply-btn' 
+        -#     -# = link_to 'Like', tweet_likes_path(tweet), method: :post, class: 'tweet-like-btn'
+        -#   .tweet_reactions
+        -#     - if user_signed_in?
+        -#       .tweet_heart.hidden.active-heart
+        -#         = image_tag 'heart-active.svg'  
+        -#       .tweet_heart.hidden.inactive-heart
+        -#         = image_tag 'heart.svg'  
+        -#       .tweet_heart_count 
+        -#         = @tweet.like_count
+
+            
+        -# - if current_user == @tweet.user
+        -#   = link_to '削除する', tweet_path(@tweet), method: :delete, data: { confirm: '本当に削除してよろしいですか?' }, class: 'tweet-delete-btn'
+
+
+
+
+        -# .content
+        -#   %p= tweet.content
+        -# .actions
+        -#   = link_to 'いいね', tweet_like_path(tweet), method: :post
+        -#   = link_to 'リプライする', new_reply_path(tweet_id: tweet.id)

@@ -1,12 +1,15 @@
 .profile-create-container
   %h2 プロフィールを作成
-  = form_with(model: @profile, url: profile_path, method: 'put', local: true) do |f|
+  %ul
+    - @profile.errors.full_messages.each do |message|
+      %li= message
+  = form_with(model: @profile, url: profile_path, method: 'put', local: true) do |form|
     .field
       = form.label :name
       = form.text_field :name, required: true
     .field
       = form.label :profile
-      = form.text_area :profile
+      = form.text_area :bio
     .field
       = form.label :location
       = form.text_field :location
